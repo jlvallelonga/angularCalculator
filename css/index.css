@@ -1,0 +1,32 @@
+.container {
+	margin-top: 15px;
+}
+
+.resultInput {
+	text-align: right;
+	width: 385px;
+}
+
+.calcControl {
+	padding: 0 15px;
+}
+
+.calcInterface button {
+	width: 93px;
+	height: 93px;
+	margin-top: 4px;
+	text-align: center;
+}
+
+.calcInterface button, .calcInterface input {
+	font-weight: bold;
+}
+
+.calcInterface .col-lg-3, .calcInterface .col-lg-12 {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+th, td, .controlHeading {
+	text-align: center;
+}
