@@ -1,149 +1,149 @@
 <!doctype html>
 <html lang="en" ng-app>
-	<head>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="css/index.css" />
-	</head>
-	<body>
-		<div ng-controller="CalculatorAppCtrl">
-			
-			<div class="container" ng-keypress="keyWasPressed">
-				<div class="row">
-					<div class="col-lg-4">
-						<h2 class="controlHeading">More Power</h2>
-						<div id="powerControls">
-							<table class="table table-bordered">
-								<tr>
-									<th>Name</th>
-									<th>Value</th>
-									<th></th>
-								</tr>
-								<tr>
-									<td>first operand</td>
-									<td>{{first || "null"}}</td>
-									<td><button type="button" class="btn btn-danger" ng-click="first = null">Clear</button></td>
-								</tr>
-								<tr>
-									<td>operator</td>
-									<td>{{operator || "null"}}</td>
-									<td><button type="button" class="btn btn-danger" ng-click="operator = null">Clear</button></td>
-								</tr>
-								<tr>
-									<td>second operand</td>
-									<td>{{second || "null"}}</td>
-									<td><button type="button" class="btn btn-danger" ng-click="second = null">Clear</button></td>
-								</tr>
-								<tr>
-									<td>result</td>
-									<td>{{result || "null"}}</td>
-									<td><button type="button" class="btn btn-danger" ng-click="result = null">Clear</button></td>
-								</tr>
-								<tr>
-									<td>output</td>
-									<td>{{output || "null"}}</td>
-									<td><button type="button" class="btn btn-danger" ng-click="output = null">Clear</button></td>
-								</tr>
-							</table>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<h2 class="controlHeading">Calculator</h2>
-						<div class="calcInterface">
-							<div class="row">
-								<div class="col-lg-12">
-									<input type="text" style="" class="resultInput form-control" ng-model="output" />
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="" disabled="disabled"></button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="" disabled="disabled"></button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="reverseSignOfLastOperand();">-/+</button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="clearAll();">AC</button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="appendToOperand('7');">7</button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="appendToOperand('8');">8</button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="appendToOperand('9');">9</button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="setOperator('/');">/</button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="appendToOperand('4');">4</button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="appendToOperand('5');">5</button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="appendToOperand('6');">6</button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="setOperator('*');">*</button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="appendToOperand('1');">1</button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="appendToOperand('2');">2</button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="appendToOperand('3');">3</button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="setOperator('-');">-</button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="appendToOperand('.');">.</button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="appendToOperand('0');">0</button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="setResult();">=</button>
-								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-default" ng-click="setOperator('+');">+</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<h2 class="controlHeading">Calculations</h2>
-						<span class="help-block">Click on calculations to load the result.</span>
-						<div class="well">
-							<ul class="list-unstyled">
-								<li ng-repeat="calculation in calculations" ng-click="appendResultToOperand(calculation);">{{calculation}}</li>
-							</ul>
-						</div>
-						
-						<button type="button" class="btn btn-danger pull-right" ng-click="calculations = []">Clear</button>
-						
-					</div>
-				</div>
-			</div>
-		</div>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+  </head>
+  <body>
+    <div ng-controller="CalculatorAppCtrl">
+      
+      <div class="container" ng-keypress="keyWasPressed">
+        <div class="row">
+          <div class="col-lg-4">
+            <h2 class="controlHeading">More Power</h2>
+            <div id="powerControls">
+              <table class="table table-bordered">
+                <tr>
+                  <th>Name</th>
+                  <th>Value</th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td>first operand</td>
+                  <td>{{first || "null"}}</td>
+                  <td><button type="button" class="btn btn-danger" ng-click="first = null">Clear</button></td>
+                </tr>
+                <tr>
+                  <td>operator</td>
+                  <td>{{operator || "null"}}</td>
+                  <td><button type="button" class="btn btn-danger" ng-click="operator = null">Clear</button></td>
+                </tr>
+                <tr>
+                  <td>second operand</td>
+                  <td>{{second || "null"}}</td>
+                  <td><button type="button" class="btn btn-danger" ng-click="second = null">Clear</button></td>
+                </tr>
+                <tr>
+                  <td>result</td>
+                  <td>{{result || "null"}}</td>
+                  <td><button type="button" class="btn btn-danger" ng-click="result = null">Clear</button></td>
+                </tr>
+                <tr>
+                  <td>output</td>
+                  <td>{{output || "null"}}</td>
+                  <td><button type="button" class="btn btn-danger" ng-click="output = null">Clear</button></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <h2 class="controlHeading">Calculator</h2>
+            <div class="calcInterface">
+              <div class="row">
+                <div class="col-lg-12">
+                  <input type="text" style="" class="resultInput form-control" ng-model="output" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="" disabled="disabled"></button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="" disabled="disabled"></button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="reverseSignOfLastOperand();">-/+</button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="clearAll();">AC</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="appendToOperand('7');">7</button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="appendToOperand('8');">8</button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="appendToOperand('9');">9</button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="setOperator('/');">/</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="appendToOperand('4');">4</button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="appendToOperand('5');">5</button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="appendToOperand('6');">6</button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="setOperator('*');">*</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="appendToOperand('1');">1</button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="appendToOperand('2');">2</button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="appendToOperand('3');">3</button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="setOperator('-');">-</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="appendToOperand('.');">.</button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="appendToOperand('0');">0</button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="setResult();">=</button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-default" ng-click="setOperator('+');">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <h2 class="controlHeading">Calculations</h2>
+            <span class="help-block">Click on calculations to load the result.</span>
+            <div class="well">
+              <ul class="list-unstyled">
+                <li ng-repeat="calculation in calculations" ng-click="appendResultToOperand(calculation);">{{calculation}}</li>
+              </ul>
+            </div>
+            
+            <button type="button" class="btn btn-danger pull-right" ng-click="calculations = []">Clear</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
 
-		<script type="text/javascript" src="js/angular.min.js"></script>
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/index.js"></script>
-	</body>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+  </body>
 </html>
