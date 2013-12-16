@@ -1,6 +1,6 @@
 var myApp = angular.module("myApp", []);
 
-myApp.directive('myKeyDir', function($document) {
+myApp.directive('keyboardDir', function($document) {
   return {
     restrict: 'A',
     link: function(scope, element, attrs, controller) {
@@ -46,8 +46,6 @@ myApp.controller('CalculatorAppCtrl', function CalculatorAppCtrl($scope) {
       $scope.appendToOperand('.');
     }
     
-  
-    console.log("code: " + code);
     //number key was pressed
     if (code > 57) {
       code = code - 48;

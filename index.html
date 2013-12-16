@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en" ng-app="myApp" ng-controller="CalculatorAppCtrl" my-key-dir>
+<html lang="en" ng-app="myApp">
   <head>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
   </head>
-  <body ng-keypress="keyup($event)">
-    <div>
+  <body>
+    <div ng-controller="CalculatorAppCtrl" keyboard-dir>
       
       <div class="container">
         <div class="row">
