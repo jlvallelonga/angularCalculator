@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="myApp" ng-controller="CalculatorAppCtrl" my-key-dir>
   <head>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
   </head>
-  <body>
-    <div ng-controller="CalculatorAppCtrl">
+  <body ng-keypress="keyup($event)">
+    <div>
       
-      <div class="container" ng-keypress="keyWasPressed">
+      <div class="container">
         <div class="row">
           <div class="col-lg-4">
             <h2 class="controlHeading">More Power</h2>

@@ -1,9 +1,61 @@
-function CalculatorAppCtrl($scope) {
+var myApp = angular.module("myApp", []);
+
+myApp.directive('myKeyDir', function($document) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs, controller) {
+      $($document).keydown(function(event) {
+        var code = event.keyCode || event.which;
+        scope.keyPressed(code);
+      });
+    }
+  };
+});
+
+myApp.controller('CalculatorAppCtrl', function CalculatorAppCtrl($scope) {
   $scope.showPowerControls = true; //by default, show the power controls
   $scope.calculations = [];
   
-  $scope.keyWasPressed = function() {
-    console.log('test');
+  $scope.keyPressed = function(code) {
+    //operator button pressed
+    if (code === 107) {
+      $scope.setOperator('+');
+    }
+    if (code === 109) {
+      $scope.setOperator('-');
+    }
+    if (code === 106) {
+      $scope.setOperator('*');
+    }
+    if (code === 111) {
+      $scope.setOperator('/');
+    }
+    
+    //enter pressed
+    if (code === 13) {
+      $scope.setResult();
+    }
+    
+    //delete pressed
+    if (code === 46) {
+      $scope.clearAll();
+    }
+    
+    //decimal point pressed
+    if (code === 110) {
+      $scope.appendToOperand('.');
+    }
+    
+  
+    console.log("code: " + code);
+    //number key was pressed
+    if (code > 57) {
+      code = code - 48;
+    }
+    if (code >= 48 && code <= 57) {
+      $scope.appendToOperand((code - 48).toString());
+    }
+    $scope.$apply();
   };
   
   $scope.appendResultToOperand = function(calcStr) {
@@ -144,4 +196,4 @@ function CalculatorAppCtrl($scope) {
   };
 
   $scope.clearAll();//clearAll the form when you first load the app
-}
+});
